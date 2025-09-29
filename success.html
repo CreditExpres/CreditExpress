@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>success</title>
+  <link rel="stylesheet" href="./style.css">
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antrag erfolgreich - CreditExpress</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <h1 onclick="goToPage('index.html')">CreditExpress</h1>
+                </div>
+                <nav class="nav-desktop">
+                    <a href="index.html" class="nav-link">Startseite</a>
+                    <a href="#" class="nav-link">Unsere Angebote</a>
+                    <a href="#" class="nav-link">Über uns</a>
+                    <button onclick="sendEmail('contact')" class="nav-link">Kontakt</button>
+                    <button onclick="sendEmail('support')" class="btn btn-primary">Support</button>
+                </nav>
+                <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobileMenu" class="mobile-menu">
+        <a href="index.html" class="mobile-nav-link">Startseite</a>
+        <a href="#" class="mobile-nav-link">Unsere Angebote</a>
+        <a href="#" class="mobile-nav-link">Über uns</a>
+        <button onclick="sendEmail('contact')" class="mobile-nav-link">Kontakt</button>
+        <button onclick="sendEmail('support')" class="btn btn-primary">Support</button>
+    </div>
+
+    <!-- Main Content -->
+    <main class="application-form-container">
+        <div class="container">
+            <div class="calculator-card" style="text-align: center;">
+                <div class="success-icon">
+                    <i class="fas fa-check"></i>
+                </div>
+                
+                <h1 class="success-title">
+                    Antrag erfolgreich eingereicht!
+                </h1>
+                
+                <p class="success-subtitle">
+                    Ihr Kreditantrag wurde registriert und wird bearbeitet.
+                </p>
+
+                <div class="summary-box">
+                    <h3 style="font-size: 1.25rem; font-weight: 600; margin-bottom: 1rem; text-align: center;">Zusammenfassung Ihres Antrags</h3>
+                    <div class="summary-grid">
+                        <div>
+                            <p><strong>Projekt:</strong> <span id="successProjectType"></span></p>
+                            <p><strong>Beantragter Betrag:</strong> <span id="successRequestedAmount"></span></p>
+                        </div>
+                        <div>
+                            <p><strong>Garantiesteuer (<span id="successGuaranteeRate"></span>%):</strong> <span id="successGuaranteeTax"></span></p>
+                            <p><strong>Nettobetrag ausgezahlt:</strong> <span id="successNetAmount" style="color: var(--accent-color); font-weight: 600;"></span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 2rem;">
+                    <div class="guarantee-box">
+                        <i class="fas fa-clock" style="margin-right: 0.75rem; font-size: 1.25rem;"></i>
+                        <span>Bearbeitungszeit: 48 Stunden maximal</span>
+                    </div>
+                    
+                    <div class="checklist">
+                        <p>✅ Eine Proforma-Rechnung wird Ihnen per E-Mail gesendet</p>
+                        <p>✅ Unser Team prüft Ihren Antrag</p>
+                        <p>✅ Sie erhalten innerhalb von 48 Stunden eine endgültige Antwort</p>
+                        <p>✅ Bei Genehmigung werden die Mittel auf Ihr Konto überwiesen</p>
+                    </div>
+                </div>
+
+                <button onclick="goToPage('index.html')" class="btn btn-primary">
+                    Neuer Antrag
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-section">
+                    <h3>CreditExpress</h3>
+                    <p>Ihr vertrauenswürdiger Partner für alle Ihre Finanzierungsprojekte.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Dienstleistungen</h4>
+                    <ul>
+                        <li><a href="#">Privatkredit</a></li>
+                        <li><a href="#">Autokredit</a></li>
+                        <li><a href="#">Renovierung</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Support</h4>
+                    <ul>
+                        <li><button onclick="sendEmail('support')">Hilfezentrum</button></li>
+                        <li><button onclick="sendEmail('contact')">Kontaktieren Sie uns</button></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-clock"></i> Mo-Fr 9-18 Uhr</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 CreditExpress. Alle Rechte vorbehalten.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize success page
+        document.addEventListener('DOMContentLoaded', function() {
+            loadSuccessData();
+        });
+    </script>
+</body>
+</html>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>

